@@ -10,12 +10,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-#Route::get('/customers', [CustomersController::class, 'index']);
 Route::resource('customers', CustomersController::class);
+
 Route::resource('products', ProductController::class);
+
 Route::resource('categories', CategoryController::class);
+
 Route::resource('colors', ColorController::class);
 
+Route::get('/api-proba', function () {
+    return 'Radi web!';
+});
 
 
 
