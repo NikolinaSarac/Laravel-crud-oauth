@@ -1,13 +1,23 @@
-# Introduction
+# BIRT REST API projekt
 
+Ova aplikacija predstavlja RESTful web servis razvijen u Laravel PHP frameworku, kao dio zadatka za predmet Arhitektura aplikacija.
 
+## Tehnologije
 
-<aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
-</aside>
+- Backend: Laravel 10
+- Baza podataka: MySQL
+- Autentifikacija: HTTP Basic Auth
+- Alat za testiranje API-ja: Postman
+- Verzija PHP-a: 8.2
 
-    This documentation aims to provide all the information you need to work with our API.
+## Opis sustava
 
-    <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-    You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+Sustav omogućuje CRUD operacije nad entitetima (npr. Customers), uz implementiranu zaštitu API endpointa pomoću HTTP Basic Auth.
+
+## Demo pristup
+
+- Email: test@test.com
+- Lozinka: tajna123
+
+Upute za testiranje API-ja se nalaze u `auth.md` datoteci.
 
