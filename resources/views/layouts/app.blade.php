@@ -9,7 +9,23 @@
 </head>
 <body>
 <div class="container">
-    <!-- Navigacija (ako je potrebno) -->
+    @auth
+    <div>
+        Prijavljeni ste kao: <strong>{{ Auth::user()->name }}</strong> (rola: {{ Auth::user()->role }})
+    </div>
+    @endauth
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+        @csrf
+    </form>
+    <!-- Link za login -->
+    <a href="{{ route('login.form') }}">
+        <button>Prijava</button>
+    </a>
+
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        Odjava
+    </a>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url('/') }}">Početna</a>
         <a class="navbar-brand" href="{{ route('customers.index') }}">Kupci</a>

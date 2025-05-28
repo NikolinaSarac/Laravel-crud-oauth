@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Color;
 
-
+#[Middleware(['auth', 'role:admin,author'])]
 class ProductController extends Controller
 {
     /**
@@ -75,19 +75,12 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
-        $product = Product::find($id);
+        $categories = Category::all();
+        $colors = Color::all(); // ✅ Dodaj ovo ako nije postojalo
 
-        // Provjeri da li je produkt pronađen
-        if (!$product) {
-            return redirect()->route('products.index')->with('error', 'Product not found');
-        }
-
-        $categories = \App\Models\Category::all();
-        return view('products.edit', compact('product', 'categories'));
-
+        return view('products.edit', compact('product', 'categories', 'colors'));
     }
 
     /**
@@ -120,20 +113,6 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Proizvod je ažuriran.');
 
-        $colorsInput = $request->input('colors', []);
-        $colorsData = [];
-
-        foreach ($colorsInput as $colorId => $colorData) {
-            if (isset($colorData['selected'])) {
-                if (!isset($colorData['quantity']) || $colorData['quantity'] === '') {
-                    return back()->withErrors(['colors.' . $colorId . '.quantity' => 'Unesi količinu za odabranu boju.'])->withInput();
-                }
-
-                $colorsData[$colorId] = ['quantity' => $colorData['quantity']];
-            }
-        }
-
-        $product->colors()->sync($colorsData);
     }
 
 

@@ -7,10 +7,10 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\CategoryController;
 
 
-Route::middleware('auth.basic')->group(function () {
-    Route::apiResource('customers', CustomerController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('categories', CategoryController::class);
-});
+//Route::middleware('auth.basic')->group(function () {
+   // Route::apiResource('customers', CustomerController::class);
+    //Route::apiResource('products', ProductController::class);
+    //Route::apiResource('categories', CategoryController::class);
+//});
 
 

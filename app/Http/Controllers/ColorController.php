@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Color;
 use App\Models\Product;
 
+#[Middleware(['auth', 'role:admin,author'])]
 class ColorController extends Controller
 {
     public function index()

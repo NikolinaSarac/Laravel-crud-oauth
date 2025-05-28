@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use App\Http\Middleware\RoleMiddleware;
 use App\Models\Customers;
-use Illuminate\Http\Request;
+
 
 class CustomersController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $customers = Customers::all();
+        $customers = Customers::all(); // ili dodaj filtriranje/paginaciju ako želiš
         return view('customers.index', compact('customers'));
+        $userRole = Auth::user()->role; // samo primjer ako želiš prikazati u view-u
+        return view('customers.index', compact('userRole'));
     }
 
     public function create()
