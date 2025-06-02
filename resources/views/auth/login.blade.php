@@ -20,5 +20,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Prijavi se</button>
+    <a href="{{ route('google.login') }}" class="btn btn-danger">Login with Google</a>
+
 </form>
 @endsection

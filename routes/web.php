@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CustomersController;
 use App\Models\User;
+use App\Http\Controllers\Auth\GoogleController;
 
 // JAVNO DOSTUPNE RUTE (guest i svi ostali)
 Route::get('/', fn() => view('welcome'));
@@ -119,3 +120,8 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('role:customers.delete')
         ->name('customers.destroy');
 });
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+//Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
